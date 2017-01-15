@@ -1,0 +1,4 @@
+{{range service "guacd"}}
+guacd-host: {{.Address}}
+guacd-port: {{.Port}}
+{{end}}

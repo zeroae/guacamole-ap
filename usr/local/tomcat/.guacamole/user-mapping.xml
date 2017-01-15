@@ -1,0 +1,4 @@
+<user-mapping>
+    <authorize username="guacamole" password="password">
+    </authorize>
+</user-mapping>
