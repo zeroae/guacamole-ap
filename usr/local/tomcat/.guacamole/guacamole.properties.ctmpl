@@ -1,4 +1,4 @@
-{{range service "guacd"}}
+{{range service "guacamole-server"}}
 guacd-host: {{.Address}}
 guacd-port: {{.Port}}
 {{end}}

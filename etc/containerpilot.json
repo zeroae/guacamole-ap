@@ -3,7 +3,7 @@
   "preStart": "/usr/local/bin/prestart.sh",
   "services": [
     {
-      "name": "guacamole",
+      "name": "guacamole-client",
       "port": 8080,
       "poll": 10,
       "ttl": 25
