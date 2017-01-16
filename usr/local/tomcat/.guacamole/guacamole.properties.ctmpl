@@ -9,8 +9,8 @@ guacd-port: {{.Port}}
 {{with index (service "mysql-primary") 0}}
 mysql-hostname: {{.Address}}
 mysql-port: {{.Port}}
-mysql-database: {{call .os.Getenv "MYSQL_DATABASE"}}
-mysql-username: {{call .os.Getenv "MYSQL_USER"}}
-mysql-password: {{call .os.Getenv "MYSQL_PASSWORD"}}
+mysql-database: ${MYSQL_DATABASE}
+mysql-username: ${MYSQL_USER}
+mysql-password: ${MYSQL_PASSWORD}
 {{end}}
 {{end}}

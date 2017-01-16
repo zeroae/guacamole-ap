@@ -65,12 +65,20 @@ RUN curl --retry 7 --fail -Lso /tmp/containerpilot.tar.gz \
     && tar zxf /tmp/containerpilot.tar.gz -C /usr/local/bin \
     && rm /tmp/containerpilot.tar.gz
 
+# Add envsubst
+RUN apt-get update                      \
+    && apt-get install -y gettext-base  \
+    && apt-cache policy docker-engine   \
+    && apt-get clean
+
 # Copy configuration files
 COPY etc /etc
 COPY usr /usr
 
+ENV GUACAMOLE_HOME=${CATALINA_HOME}/.guacamole
+
 # Start Tomcat8
 EXPOSE 8080
-CMD [ "/usr/local/bin/containerpilot", \
+CMD [ "containerpilot", \
       "/usr/local/tomcat/bin/catalina.sh", "run" ]
 
