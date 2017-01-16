@@ -1,4 +1,16 @@
-{{range service "guacamole-server"}}
+{{if service "guacamole-server"}}
+{{with index (service "guacamole-server") 0}}
 guacd-host: {{.Address}}
 guacd-port: {{.Port}}
+{{end}}
+{{end}}
+
+{{if service "mysql-primary"}}
+{{with index (service "mysql-primary") 0}}
+mysql-hostname: {{.Address}}
+mysql-port: {{.Port}}
+mysql-database: {{call .os.Getenv "MYSQL_DATABASE"}}
+mysql-username: {{call .os.Getenv "MYSQL_USER"}}
+mysql-password: {{call .os.Getenv "MYSQL_PASSWORD"}}
+{{end}}
 {{end}}
