@@ -3,10 +3,18 @@
   "preStart": "/usr/local/bin/prestart.sh",
   "services": [
     {
+      "health": "/usr/bin/curl --fail -s http://localhost:8080/guacamole",
       "name": "guacamole-client",
       "port": 8080,
       "poll": 10,
       "ttl": 25
+    }
+  ],
+  "backends": [
+    {
+      "name": "guacamole-server",
+      "onChange": "/usr/local/bin/onChange.sh guacamole-server",
+      "poll": 20
     }
   ],
   "coprocesses": [{{ if .CONSUL_AGENT }}
